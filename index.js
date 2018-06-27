@@ -39,8 +39,8 @@ console.log("\n - "+Object.keys(installedIDEs).join("\n - ")+"\n\n")
 //Step 3: Ask for permission
 read({ prompt: '  Do you want to install Optic and all the above IDE Plugins? (y/n)?' }, function(er, yOrN) {
     if (yOrN === 'y' || yOrN === 'Y' || yOrN === 'yes') {
-        
-    appinstaller(()=> installIDEPlugins(installedIDEs, ()=> {
+
+    /*appinstaller(()=>  */installIDEPlugins(installedIDEs, ()=> {
         console.log('\n\n\n')
         read({ prompt: '\n\n'+ 'Optic is Installed! Before I go can I help you start the Optic Demo Project? (y/n)' }, function(er, yOrN) {
             if (yOrN === 'y' || yOrN === 'Y' || yOrN === 'yes') {
@@ -57,12 +57,12 @@ read({ prompt: '  Do you want to install Optic and all the above IDE Plugins? (y
                 console.log('\n\n Happy Coding :) '.bold)
             }
         })
-    }))
+    })
 
 
     } else {
         reportToMixpanel(installedIDEs, false, false)
-        console.log("\n\nInstall cancelled. You can optic-installer anytime to try again OR run 'npm uninstall optic-install -g' to remove this installer".bold.yellow)
+        console.log("\n\nInstall cancelled. You can run optic-installer anytime to try again OR run 'npm uninstall optic-installer -g' to remove this installer".bold.yellow)
     }
 })
 
@@ -72,7 +72,7 @@ read({ prompt: '  Do you want to install Optic and all the above IDE Plugins? (y
 function reportToMixpanel(installedIDEs, didInstall, didDemo) {
     const Mixpanel = require('mixpanel');
     const mixpanel = Mixpanel.init('c0297cb80a0ef23482d83ec59c74b8f9');
- 
+
     mixpanel.track('Installer Run', {
         ip: ipaddress, //to compare with web traffic
         platform,
@@ -80,7 +80,7 @@ function reportToMixpanel(installedIDEs, didInstall, didDemo) {
         didInstall,
         didDemo
     }, (e)=> {
-        
+
     })
 
 }
