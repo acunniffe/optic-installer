@@ -40,7 +40,7 @@ console.log("\n - "+Object.keys(installedIDEs).join("\n - ")+"\n\n")
 read({ prompt: '  Do you want to install Optic and all the above IDE Plugins? (y/n)?' }, function(er, yOrN) {
     if (yOrN === 'y' || yOrN === 'Y' || yOrN === 'yes') {
 
-    /*appinstaller(()=>  */installIDEPlugins(installedIDEs, ()=> {
+    appinstaller(()=>  installIDEPlugins(installedIDEs, ()=> {
         console.log('\n\n\n')
         read({ prompt: '\n\n'+ 'Optic is Installed! Before I go can I help you start the Optic Demo Project? (y/n)' }, function(er, yOrN) {
             if (yOrN === 'y' || yOrN === 'Y' || yOrN === 'yes') {
@@ -57,8 +57,7 @@ read({ prompt: '  Do you want to install Optic and all the above IDE Plugins? (y
                 console.log('\n\n Happy Coding :) '.bold)
             }
         })
-    })
-
+    }))
 
     } else {
         reportToMixpanel(installedIDEs, false, false)

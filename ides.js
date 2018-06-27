@@ -56,10 +56,9 @@ module.exports.installIDEPlugins = function(installedIDEs, allDone) {
 			.on('end', (a)=> {
 				const path = homedir+ '/Library/Application Support/Sublime Text 3/Packages'
 				fs.createReadStream(destination).pipe(unzipper.Extract({ path }));
-				console.log('Success: '.bold+'Sublime Text 3 Plugin Installed'.green)
 			})
 			.pipe(fs.createWriteStream(destination))
-
+		console.log('Success: '.bold+'Sublime Text 3 Plugin Installed'.green)
 	}
 
 
