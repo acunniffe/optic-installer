@@ -8,7 +8,7 @@ module.exports.startDemo = function (ides, demoFolder) {
         message: 'Which IDE should we open the demo with?',
         choices: Object.keys(ides)
     });
-    
+
     list.ask(function(answer) {
 
         exec('open https://useoptic.com/docs/#/using/workflow')
@@ -24,6 +24,10 @@ module.exports.startDemo = function (ides, demoFolder) {
                 exec('atom '+demoFolder)
                 break;
             }
+			case 'Sublime Text 3': {
+				exec('open -a "sublime text" '+demoFolder)
+				break;
+			}
             case 'IntelliJ CE': {
                 exec('open -a '+ides['IntelliJ CE'].replace(/(\s+)/g, '\\$1')+' '+demoFolder)
                 break;

@@ -1,6 +1,6 @@
 {
   "name": "optic-installer",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "install-ides": "node testIDE.js"
   },
   "bin": {
-    "optic-installer": "node index.js"
+    "optic-installer": "index.js"
   },
   "author": "",
   "license": "ISC",
