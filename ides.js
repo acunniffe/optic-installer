@@ -73,7 +73,7 @@ module.exports.installIDEPlugins = function(installedIDEs, allDone) {
 
     }
 
-    let jetbrains = 'https://plugins.jetbrains.com/plugin/download?rel=true&updateId=46598'
+    let jetbrains = 'https://plugins.jetbrains.com/plugin/download?rel=true&updateId=47262'
 
     function downloadJetBrains(afterDownload) {
         const destination = '/tmp/jetbrains-optic.zip'

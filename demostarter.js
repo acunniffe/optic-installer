@@ -11,7 +11,7 @@ module.exports.startDemo = function (ides, demoFolder) {
 
     list.ask(function(answer) {
 
-        exec('open https://useoptic.com/docs/#/using/workflow')
+        exec('open https://useoptic.com/workflow')
         exec('open /Applications/Optic.app')
 
         switch (answer) {

@@ -5,16 +5,15 @@ const colors = require('colors');
 const ProgressBar = require('cli-progress-bar')
 const dmg = require('dmg');
 const fs = require('fs-extra')
+const exec = require('sync-exec');
 
-
-const destination = '/tmp/Optic.dmg'
+const destination = '/tmp/Optic.zip'
 const homedir = require('os').homedir();
 
 function download(downloadedCallback) {
 
     console.log('Starting App Install\n'.bold)
     const bar = new ProgressBar()
-    // The options argument is optional so you can omit it
     progress(request(config.app.url), {
         throttle: 500,
     })
@@ -36,23 +35,23 @@ function download(downloadedCallback) {
 
 
 function mountAndMoveToApplications(downloaded, callback) {
-    console.log('Installing Optic...'.yellow)
-    dmg.mount(downloaded, function(err, path) {
-        const app = path+'/Optic.app'
-        fs.copySync(app, '/Applications/Optic.app', { overwrite: true })
-        const demoProject = path+'/optic-demo-project'
-        fs.copySync(demoProject, homedir+'/Downloads/optic-demo-project', { overwrite: true })
-
+    try {
+        exec('rm -rf /Applications/Optic.app && unzip /tmp/Optic.zip -d /Applications/  && rm -rf /Applications/__MACOSX')
         console.log('Success: '.bold+'Optic.app installed in /Applications')
+         exec('cd ~/Downloads && rm -rf optic-demo-project && git clone https://github.com/opticdev/optic-demo-project')
         console.log('Success: '.bold+'Demo project downloaded to ~/Downloads/optic-demo-project')
-
+    }
+    catch (e) {
+        console.error("Failed to install " + e)
+    } finally {
         callback()
-
-        dmg.unmount(path, function(err) {});
-
-    });
+    }
 }
 
-module.exports.install = function (complete) {
+module.exports.install = function (complete = ()=> console.log('done')) {
     download((downloaded)=> mountAndMoveToApplications(downloaded, complete))
+}
+
+module.exports.testMount = function (zipTest) {
+    mountAndMoveToApplications(zipTest, ()=> console.log('done'))
 }
