@@ -52,7 +52,7 @@ read({ prompt: '  Do you want to install Optic and all the above IDE Plugins? (y
                 reportToMixpanel(installedIDEs, true, false)
                 console.log('Great! Have fun. Here are a few parting links before my process is terminated.')
                 console.log('Optic is open source! '+ 'https://github.com/opticdev'.underline.blue)
-                console.log('Here are our docs '+ 'https://useoptic.com/docs'.underline.blue)
+                console.log('Here are our docs '+ 'https://useoptic.com/what-is-optic'.underline.blue)
                 console.log('Watch our Product Video '+ 'https://www.youtube.com/watch?v=sMXcKMKYZ8c'.underline.blue)
                 console.log('\n\n Happy Coding :) '.bold)
             }

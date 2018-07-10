@@ -3,7 +3,6 @@ const request = require('request');
 const progress = require('request-progress');
 const colors = require('colors');
 const ProgressBar = require('cli-progress-bar')
-const dmg = require('dmg');
 const fs = require('fs-extra')
 const exec = require('sync-exec');
 
